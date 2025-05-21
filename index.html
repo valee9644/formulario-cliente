@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Cliente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #a18cd1, #fbc2eb);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-container h2 {
+      color: #6a1b9a;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #8e24aa;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Cliente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #a18cd1, #fbc2eb);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-container h2 {
+      color: #6a1b9a;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #8e24aa;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #6a1b9a;
+    }
+
+    .mensaje-confirmacion {
+      display: none;
+      margin-top: 1rem;
+      color: #4a148c;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Formulario de Cliente</h2>
+    <form id="formulario" action="https://formsubmit.co/ajax/jeonlizeth238@gmail.com" method="POST">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="email" name="email" placeholder="Correo electrónico" required>
+      <input type="tel" name="telefono" placeholder="Teléfono">
+      <textarea name="mensaje" rows="4" placeholder="Mensaje o detalles adicionales"></textarea>
+
+      <!-- Evitar captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit">Enviar</button>
+    </form>
+    <div class="mensaje-confirmacion" id="mensajeExito">
+      Gracias por su mensaje. Un empleado se pondrá en contacto con usted para atenderlo.
+    </div>
+  </div>
+
+  <script>
+    const formulario = document.getElementById('formulario');
+    const mensaje = document.getElementById('mensajeExito');
+
+    formulario.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const datos = new FormData(formulario);
+
+      fetch(formulario.action, {
+        method: 'POST',
+        body: datos,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          formulario.reset();
+          mensaje.style.display = 'block';
+        } else {
+          alert('Hubo un error al enviar el formulario. Intenta de nuevo.');
+        }
+      })
+      .catch(error => {
+        alert('Error de red. Intenta más tarde.');
+      });
+    });
+  </script>
+</body>
+</html>
